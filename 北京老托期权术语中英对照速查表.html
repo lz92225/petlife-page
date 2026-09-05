@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="北京老托股票期权关键术语中英对照速查表">
+    <meta name="keywords" content="股票期权, 期权术语, 中英对照, 美股期权, 期权交易">
+    <meta name="author" content="北京老托">
+    <title>北京老托股票期权关键术语中英对照速查表</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Tailwind 配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36CFC9',
+                        accent: '#722ED1',
+                        neutral: '#F5F7FA',
+                        dark: '#1D2129',
+                        light: '#FFFFFF',
+                        muted: '#86909C'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 4px 20px rgba(0, 0, 0, 0.08)',
+                        'hover': '0 8px 30px rgba(22, 93, 255, 0.15)',
+                    }
+                },
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .table-shadow {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            }
+            .transition-bg {
+                transition: background-color 0.3s ease;
+            }
+            .transition-transform {
+                transition: transform 0.3s ease;
+            }
+            .transition-all-custom {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-inter bg-neutral text-dark min-h-screen">
+    <!-- 顶部导航 -->
+    <header class="sticky top-0 bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all-custom">
+        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-primary mb-4 md:mb-0">
+                <i class="fa fa-line-chart mr-2"></i>北京老托期权关键术语速查表
+            </h1>
+
+            <!-- 搜索框 -->
+            <div class="relative w-full md:w-80">
+                <input type="text" id="searchInput" placeholder="搜索术语..."
+                    class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all-custom">
+                <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-muted"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- 说明卡片 -->
+        <div class="bg-white rounded-xl p-6 mb-8 shadow-card">
+            <h2 class="text-xl font-semibold mb-3 text-dark flex items-center">
+                <i class="fa fa-info-circle text-primary mr-2"></i>使用说明
+            </h2>
+            <p class="text-muted mb-4">
+                本表涵盖美股期权交易常见术语，包含中英文对照、缩写、解释及实例。
+                点击表格行可查看详细说明，支持关键词搜索筛选。
+            </p>
+            <div class="flex flex-wrap gap-2">
+                <span
+                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                    <i class="fa fa-hand-pointer-o mr-1"></i>点击行展开详情
+                </span>
+                <span
+                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-secondary/10 text-dark">
+                    <i class="fa fa-search mr-1"></i>支持中英文搜索
+                </span>
+                <span
+                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent">
+                    <i class="fa fa-mobile mr-1"></i>响应式设计
+                </span>
+            </div>
+        </div>
+
+        <!-- 表格容器 -->
+        <div class="bg-white rounded-xl shadow-card overflow-hidden">
+            <div class="overflow-x-auto scrollbar-hide">
+                <table class="w-full border-collapse">
+                    <caption class="text-muted text-left p-4 italic">
+                        涵盖常见英文术语、中文翻译、常用缩写、简明解释、实例与图解
+                    </caption>
+                    <thead>
+                        <tr class="bg-gradient-to-r from-primary to-primary/80 text-white">
+                            <th class="px-6 py-4 text-left font-semibold">序号</th>
+                            <th class="px-6 py-4 text-left font-semibold">英文术语</th>
+                            <th class="px-6 py-4 text-left font-semibold">中文翻译</th>
+                            <th class="px-6 py-4 text-left font-semibold">常用缩写</th>
+                            <th class="px-6 py-4 text-left font-semibold">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="termsTable">
+                        <!-- 表格内容将通过JS动态生成 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 无结果提示 -->
+        <div id="noResults" class="hidden py-16 text-center">
+            <i class="fa fa-search-minus text-5xl text-muted mb-4"></i>
+            <p class="text-muted text-lg">未找到匹配的术语，请尝试其他关键词</p>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-2">北京老托股票期权关键术语中英对照速查表 v1.0</p>
+            <p class="text-sm text-gray-400">© 2025 公众号: 北京老托 微信: bjlaotuo | 期权学习工具 | 仅供参考，不构成投资建议</p>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop"
+        class="fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all-custom z-50">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 期权术语数据
+        const optionsTerms = [
+            {
+                id: 1,
+                english: "Call Option",
+                chinese: "看涨期权 / 认购期权",
+                abbr: "Call",
+                explanation: "赋予持有者在约定时间内以约定价买入标的股票的权利",
+                example: "买入AAPL 220919C150：可在2022-09-19前以150美元买入100股苹果"
+            },
+            {
+                id: 2,
+                english: "Put Option",
+                chinese: "看跌期权 / 认沽期权",
+                abbr: "Put",
+                explanation: "赋予持有者在约定时间内以约定价卖出标的股票的权利",
+                example: "买入TSLA 220930P700：可在2022-09-30前以700美元卖出100股特斯拉"
+            },
+            {
+                id: 3,
+                english: "Strike Price",
+                chinese: "行权价 / 履约价",
+                abbr: "K",
+                explanation: "期权合约规定的买卖标的股票的价格",
+                example: "行权价为120美元的SPY看涨期权，意味可用120美元买入SPY"
+            },
+            {
+                id: 4,
+                english: "Expiration Date",
+                chinese: "到期日",
+                abbr: "Exp",
+                explanation: "期权合约最后有效的日期，之后作废",
+                example: "期权标记为2024-07-19到期，此日后合约无价值"
+            },
+            {
+                id: 5,
+                english: "In the Money",
+                chinese: "价内",
+                abbr: "ITM",
+                explanation: "看涨期权：标的价格 > 行权价；看跌期权：标的价格 < 行权价",
+                example: "NFLX股价450美元，行权420美元的Call处于价内"
+            },
+            {
+                id: 6,
+                english: "At the Money",
+                chinese: "平价",
+                abbr: "ATM",
+                explanation: "标的价格 ≈ 行权价",
+                example: "AMZN股价3400美元，行权3400美元的Put/Call皆平价"
+            },
+            {
+                id: 7,
+                english: "Out of the Money",
+                chinese: "价外",
+                abbr: "OTM",
+                explanation: "看涨期权：标的价格 < 行权价；看跌期权：标的价格 > 行权价",
+                example: "GOOGL股价2700美元，行权3000美元的Call为价外"
+            },
+            {
+                id: 8,
+                english: "Intrinsic Value",
+                chinese: "内在价值",
+                abbr: "-",
+                explanation: "期权立即行权所能获得的利润。价内期权才有内在价值，等于标的价与行权价之差",
+                example: "AAPL股价175美元，行权价170的Call，内在价值为5美元"
+            },
+            {
+                id: 9,
+                english: "Extrinsic Value / Time Value",
+                chinese: "外在价值 / 时间价值",
+                abbr: "-",
+                explanation: "期权价格超出内在价值的部分，代表了到期前价格向有利方向变动的可能性",
+                example: "上述AAPL期权市价为7美元，其外在价值为 7 - 5 = 2美元"
+            },
+            {
+                id: 10,
+                english: "Implied Volatility",
+                chinese: "隐含波动率",
+                abbr: "IV",
+                explanation: "市场对未来价格波动的预期，IV越高期权越贵",
+                example: "财报前TSLA期权IV飙升至80%，权利金显著扩大"
+            },
+            {
+                id: 11,
+                english: "Delta",
+                chinese: "德尔塔",
+                abbr: "Δ",
+                explanation: "期权价格对标的价格变化的敏感度，范围-1到1",
+                example: "Delta=0.6的Call，标的涨1美元，期权约涨0.6美元"
+            },
+            {
+                id: 12,
+                english: "Gamma",
+                chinese: "伽马",
+                abbr: "Γ",
+                explanation: "Delta对标的变动的敏感度，高Gamma意味Delta变化快",
+                example: "Gamma=0.05，标的价格上升1美元，Delta再增0.05"
+            },
+            {
+                id: 13,
+                english: "Theta",
+                chinese: "西塔",
+                abbr: "Θ",
+                explanation: "时间衰减，期权每日因时间流逝损失的价值",
+                example: "Theta=-0.04，每过一天期权权利金减少0.04美元"
+            },
+            {
+                id: 14,
+                english: "Vega",
+                chinese: "维加",
+                abbr: "ν",
+                explanation: "期权价格对波动率变化的敏感度",
+                example: "Vega=0.12，IV上升1个点，期权涨约0.12美元"
+            },
+            {
+                id: 15,
+                english: "Rho",
+                chinese: "罗",
+                abbr: "ρ",
+                explanation: "期权价格对无风险利率变化的敏感度",
+                example: "Rho=0.05，利率上升1%，期权价格约上涨0.05美元"
+            },
+            {
+                id: 16,
+                english: "Bid-Ask Spread",
+                chinese: "买卖价差",
+                abbr: "Sprd",
+                explanation: "买价与卖价之差，衡量流动性",
+                example: "期权Bid 2.10，Ask 2.20，价差0.10美元"
+            },
+            {
+                id: 17,
+                english: "Open Interest",
+                chinese: "未平仓量",
+                abbr: "OI",
+                explanation: "市场上尚未平仓的期权合约数量",
+                example: "某行权价Call OI达50,000，显示活跃持仓"
+            },
+            {
+                id: 18,
+                english: "Volume",
+                chinese: "成交量",
+                abbr: "Vol",
+                explanation: "当日成交的期权合约张数",
+                example: "某Put单日成交8万张，远高于均值"
+            },
+            {
+                id: 19,
+                english: "Assignment",
+                chinese: "指派 / 行权配对",
+                abbr: "Assign",
+                explanation: "期权卖方被强制履约的过程",
+                example: "卖出SPY 430Call被指派，需以430美元卖出100股SPY"
+            },
+            {
+                id: 20,
+                english: "LEAPS",
+                chinese: "长期期权",
+                abbr: "LEAPS",
+                explanation: "到期日长达1-3年的长期股票期权",
+                example: "买入QQQ 2026年1月到期的LEAPS Call"
+            },
+            {
+                id: 21,
+                english: "Rolling (an option)",
+                chinese: "移仓 / 展期",
+                abbr: "Roll",
+                explanation: "平掉现有仓位，同时开立一个相同标的、但到期日更远或行权价不同的新仓位",
+                example: "将快到期的SPY 450Call平仓，并开仓买入下个月的SPY 455Call"
+            },
+            {
+                id: 22,
+                english: "Early Assignment",
+                chinese: "提前指派",
+                abbr: "Early",
+                explanation: "美式期权在除息日前被提前行权的风险",
+                example: "卖出深度ITM Call，临近除息需防提前指派"
+            },
+            {
+                id: 23,
+                english: "Implied Volatility Rank",
+                chinese: "隐含波动率分位",
+                abbr: "IVR",
+                explanation: "当前IV在最近一年区间内的相对位置，0-100",
+                example: "IVR=90意味当前IV处于一年高位，卖方占优"
+            },
+            {
+                id: 24,
+                english: "European Option",
+                chinese: "欧式期权",
+                abbr: "European",
+                explanation: "只能在到期日行权",
+                example: "SPX指数期权为欧式期权"
+            },
+            {
+                id: 25,
+                english: "American Option",
+                chinese: "美式期权",
+                abbr: "American",
+                explanation: "可在到期前任何交易日行权",
+                example: "美股普通股票期权皆为美式"
+            },
+
+            {
+                id: 26,
+                english: "Straddle",
+                chinese: "跨式",
+                abbr: "Straddle",
+                explanation: "同时买入同到期同执行价的Call与Put，博大幅波动",
+                example: "NVDA财报前买入500美元Straddle"
+            },
+            {
+                id: 27,
+                english: "Strangle",
+                chinese: "宽跨式",
+                abbr: "Strangle",
+                explanation: "买入不同执行价的Call与Put，成本低于Straddle",
+                example: "买入AMZN 330Call+320Put组成宽跨式"
+            },
+            {
+                id: 28,
+                english: "Covered Call",
+                chinese: "备兑看涨",
+                abbr: "CC",
+                explanation: "持有正股同时卖出对应数量的Call，增强收益",
+                example: "持有100股MSFT，卖出1张MSFT 350Call收权利金"
+            },
+            {
+                id: 29,
+                english: "Protective Put",
+                chinese: "保护性看跌",
+                abbr: "PP",
+                explanation: "持有正股同时买入Put，锁定下行风险",
+                example: "持有100股AAPL，买入AAPL 150Put对冲"
+            },
+            {
+                id: 30,
+                english: "Cash-Secured Put",
+                chinese: "现金担保看跌期权",
+                abbr: "CSP",
+                explanation: "卖出Put并持有足够现金以备接盘。用于产生收入或以更低价格买入股票",
+                example: "卖出GOOG 100P，并准备10000美元现金，若股价跌破100则以此价买入"
+            },
+            {
+                id: 31,
+                english: "Vertical Spread",
+                chinese: "垂直价差",
+                abbr: "Vertical",
+                explanation: "同时买入和卖出两个同类型、同到期日但不同行权价的期权",
+                example: "买入MSFT 300Call，卖出MSFT 310Call，构成牛市看涨价差(Bull Call Spread)"
+            },
+            {
+                id: 32,
+                english: "Iron Condor",
+                chinese: "铁鹰",
+                abbr: "IC",
+                explanation: "卖出跨价宽跨式，盈利区间窄，波动率低时获利",
+                example: "SPX 3900/3950/4050/4100 Iron Condor"
+            },
+
+            {
+                id: 33,
+                english: "Bull Put Spread",
+                chinese: "牛市看跌价差",
+                abbr: "BPS",
+                explanation: "卖出一个较高行权价的Put，同时买入一个更低行权价的Put。是一种收入策略，预期股价温和上涨或盘整",
+                example: "卖出SPY 445P，买入SPY 440P，收取净权利金，只要SPY到期时高于445"
+            },
+            {
+                id: 34,
+                english: "Bear Call Spread",
+                chinese: "熊市看涨价差",
+                abbr: "BCS",
+                explanation: "卖出一个较低行权价的Call，同时买入一个更高行权价的Call。是一种收入策略，预期股价温和下跌或盘整",
+                example: "卖出TSLA 200C，买入TSLA 210C，收取净权利金，只要TSLA到期时低于200"
+            },
+            {
+                id: 35,
+                english: "Butterfly Spread",
+                chinese: "蝶式价差",
+                abbr: "Bfly",
+                explanation: "结合牛市价差和熊市价差，通常涉及三个行权价。买入一个低行权价和一个高行权价的期权，卖出两个中间行权价的期权",
+                example: "买入1张SPY 440C，卖出2张SPY 450C，买入1张SPY 460C，博取股价在450附近窄幅波动"
+            },
+            {
+                id: 36,
+                english: "Calendar Spread",
+                chinese: "日历价差",
+                abbr: "Time Spread",
+                explanation: "买入一个远月期权，同时卖出一个相同行权价的近月期权。利用近月期权时间价值(Theta)衰减更快的特性来获利",
+                example: "卖出1张下周到期的NVDA 180C，买入1张下个月到期的NVDA 180C"
+            },
+            {
+                id: 37,
+                english: "Diagonal Spread",
+                chinese: "对角价差",
+                abbr: "-",
+                explanation: "买入一个远月期权，同时卖出一个不同行权价的近月期权。结合了垂直价差和日历价差的特点",
+                example: "买入明年一月的AAPL 170C，卖出下个月的AAPL 180C"
+            },
+            {
+                id: 38,
+                english: "Collar",
+                chinese: "领口策略",
+                abbr: "-",
+                explanation: "持有正股，同时买入保护性Put，并通过卖出价外Call来支付Put的成本，将股价锁定在一定区间内",
+                example: "持有100股GOOG，买入一张95P，同时卖出一张110C，将股价锁定在95-110区间"
+            },
+            {
+                id: 39,
+                english: "The Wheel Strategy",
+                chinese: "轮式策略",
+                abbr: "Wheel",
+                explanation: "一种结合卖出CSP和CC的系统性策略。首先卖出CSP，如果被行权接盘股票，则转为对该股票卖出CC",
+                example: "持续卖出AAPL的CSP，若以160美元接盘，则开始卖出165美元的CC来创收"
+            }
+        ]
+
+        // DOM元素
+        const termsTable = document.getElementById('termsTable')
+        const searchInput = document.getElementById('searchInput')
+        const noResults = document.getElementById('noResults')
+        const backToTopBtn = document.getElementById('backToTop')
+
+        // 初始化表格
+        function renderTable(terms) {
+            termsTable.innerHTML = ''
+
+            if (terms.length === 0) {
+                noResults.classList.remove('hidden')
+                return
+            }
+
+            noResults.classList.add('hidden')
+
+            terms.forEach(term => {
+                // 创建主行
+                const row = document.createElement('tr')
+                row.className = 'border-b border-gray-100 hover:bg-primary/5 transition-all-custom cursor-pointer'
+                row.dataset.id = term.id
+
+                // 主行内容
+                row.innerHTML = `
+                    <td class="px-6 py-4 font-medium">${term.id}</td>
+                    <td class="px-6 py-4 font-medium">${term.english}</td>
+                    <td class="px-6 py-4">${term.chinese}</td>
+                    <td class="px-6 py-4 text-accent font-semibold">${term.abbr}</td>
+                    <td class="px-6 py-4">
+                        <button class="text-primary hover:text-primary/80 transition-colors">
+                            <i class="fa fa-chevron-down toggle-icon transition-transform"></i>
+                        </button>
+                    </td>
+                `
+
+                // 创建详情行
+                const detailRow = document.createElement('tr')
+                detailRow.className = 'bg-gray-50 hidden'
+                detailRow.dataset.detailFor = term.id
+
+                // 详情行内容
+                detailRow.innerHTML = `
+    <td colspan="5" class="px-6 py-4">
+        <div class="p-4 bg-white rounded-lg shadow-sm border border-gray-100">
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2 text-primary">${term.english} <span class="text-sm text-muted font-normal">(${term.chinese})</span></h3>
+                    <p class="mb-4"><strong>解释：</strong>${term.explanation}</p>
+                </div>
+                <div>
+                    <h4 class="font-medium text-dark mb-2">实例说明</h4>
+                    <div class="bg-neutral p-3 rounded-lg text-sm border-l-4 border-secondary">
+                        ${term.example}
+                    </div>
+                </div>
+            </div>
+
+            <!-- 新增SVG图解卡片 -->
+            <div class="mt-6 pt-6 border-t border-gray-100">
+                <h4 class="font-medium text-dark mb-3">图解说明</h4>
+                <div class="bg-neutral p-4 rounded-lg">
+                    ${getTermSvg(term.id, term.english)}
+                </div>
+            </div>
+        </div>
+    </td>
+`
+
+                function getTermSvg(id, term) {
+                    switch (id) {
+                        case 1: // Call Option 看涨期权
+                            return `
+                <svg width="100%" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 坐标轴 -->
+                    <line x1="50" y1="150" x2="350" y2="150" stroke="#333" stroke-width="2"/>
+                    <line x1="50" y1="150" x2="50" y2="50" stroke="#333" stroke-width="2"/>
+
+                    <!-- 价格标签 -->
+                    <text x="45" y="155" text-anchor="end" font-size="12">0</text>
+                    <text x="150" y="155" text-anchor="middle" font-size="12">S</text>
+                    <text x="250" y="155" text-anchor="middle" font-size="12">K</text>
+                    <text x="350" y="155" text-anchor="middle" font-size="12">股价</text>
+                    <text x="45" y="50" text-anchor="end" font-size="12">收益</text>
+
+                    <!-- 行权价线 -->
+                    <line x1="250" y1="150" x2="250" y2="50" stroke="#999" stroke-width="1" stroke-dasharray="5,3"/>
+
+                    <!-- 看涨期权收益曲线 -->
+                    <path d="M50,150 L250,150 L350,50" fill="none" stroke="#165DFF" stroke-width="3"/>
+
+                    <!-- 权利金成本 -->
+                    <line x1="50" y1="165" x2="150" y2="165" stroke="#722ED1" stroke-width="2" stroke-dasharray="5,3"/>
+                    <text x="100" y="180" text-anchor="middle" font-size="10" fill="#722ED1">权利金</text>
+
+                    <!-- 盈亏平衡点 -->
+                    <circle cx="280" cy="150" r="4" fill="#36CFC9"/>
+                    <text x="280" y="140" text-anchor="middle" font-size="10" fill="#36CFC9">平衡点</text>
+
+                    <!-- 图例 -->
+                    <g transform="translate(250, 30)">
+                        <line x1="0" y1="0" x2="20" y2="0" stroke="#165DFF" stroke-width="3"/>
+                        <text x="25" y="5" font-size="11">看涨期权收益</text>
+                    </g>
+                </svg>
+            `
+
+                        case 2: // Put Option 看跌期权
+                            return `
+                <svg width="100%" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 坐标轴 -->
+                    <line x1="50" y1="150" x2="350" y2="150" stroke="#333" stroke-width="2"/>
+                    <line x1="50" y1="150" x2="50" y2="50" stroke="#333" stroke-width="2"/>
+
+                    <!-- 价格标签 -->
+                    <text x="45" y="155" text-anchor="end" font-size="12">0</text>
+                    <text x="150" y="155" text-anchor="middle" font-size="12">K</text>
+                    <text x="250" y="155" text-anchor="middle" font-size="12">S</text>
+                    <text x="350" y="155" text-anchor="middle" font-size="12">股价</text>
+                    <text x="45" y="50" text-anchor="end" font-size="12">收益</text>
+
+                    <!-- 行权价线 -->
+                    <line x1="150" y1="150" x2="150" y2="50" stroke="#999" stroke-width="1" stroke-dasharray="5,3"/>
+
+                    <!-- 看跌期权收益曲线 -->
+                    <path d="M50,50 L150,150 L350,150" fill="none" stroke="#722ED1" stroke-width="3"/>
+
+                    <!-- 权利金成本 -->
+                    <line x1="250" y1="165" x2="350" y2="165" stroke="#722ED1" stroke-width="2" stroke-dasharray="5,3"/>
+                    <text x="300" y="180" text-anchor="middle" font-size="10" fill="#722ED1">权利金</text>
+
+                    <!-- 盈亏平衡点 -->
+                    <circle cx="120" cy="150" r="4" fill="#36CFC9"/>
+                    <text x="120" y="140" text-anchor="middle" font-size="10" fill="#36CFC9">平衡点</text>
+
+                    <!-- 图例 -->
+                    <g transform="translate(250, 30)">
+                        <line x1="0" y1="0" x2="20" y2="0" stroke="#722ED1" stroke-width="3"/>
+                        <text x="25" y="5" font-size="11">看跌期权收益</text>
+                    </g>
+                </svg>
+            `
+
+                        case 3: // Strike Price 行权价
+                            return `
+                <svg width="100%" height="180" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 股票 -->
+                    <rect x="100" y="60" width="80" height="40" rx="5" fill="#f0f0f0" stroke="#ccc" stroke-width="2"/>
+                    <text x="140" y="85" text-anchor="middle" font-size="14">股票</text>
+                    <text x="140" y="115" text-anchor="middle" font-size="12">价格: $150</text>
+
+                    <!-- 行权价标签 -->
+                    <rect x="240" y="60" width="100" height="40" rx="5" fill="#e6f7ff" stroke="#165DFF" stroke-width="2"/>
+                    <text x="290" y="85" text-anchor="middle" font-size="14">行权价</text>
+                    <text x="290" y="115" text-anchor="middle" font-size="12">K = $140</text>
+
+                    <!-- 箭头 -->
+                    <line x1="180" y1="80" x2="240" y2="80" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <text x="210" y="50" text-anchor="middle" font-size="11">可按此价格交易</text>
+
+                    <!-- 定义箭头标记 -->
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+                        </marker>
+                    </defs>
+
+                    <!-- 说明文本 -->
+                    <text x="200" y="140" text-anchor="middle" font-size="12" fill="#666">
+                        期权合约中规定的固定买卖价格
+                    </text>
+                </svg>
+            `
+
+                        case 4: // Expiration Date 到期日
+                            return `
+                <svg width="100%" height="180" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 日历图标 -->
+                    <rect x="150" y="50" width="100" height="80" rx="5" fill="#fff" stroke="#ccc" stroke-width="2"/>
+                    <rect x="150" y="50" width="100" height="20" rx="5" ry="5" fill="#165DFF" stroke="#165DFF" stroke-width="1"/>
+                    <text x="200" y="65" text-anchor="middle" font-size="12" fill="white">2025年8月9日</text>
+                    <text x="200" y="95" text-anchor="middle" font-size="16" font-weight="bold">到期日</text>
+                    <text x="200" y="120" text-anchor="middle" font-size="11" fill="#666">Expiration Date</text>
+
+                    <!-- 时间线 -->
+                    <line x1="100" y1="140" x2="300" y2="140" stroke="#999" stroke-width="2" stroke-dasharray="3,3"/>
+                    <circle cx="150" cy="140" r="6" fill="#165DFF"/>
+                    <circle cx="250" cy="140" r="6" fill="#f5222d"/>
+
+                    <!-- 时间点标签 -->
+                    <text x="150" y="160" text-anchor="middle" font-size="11">购买日</text>
+                    <text x="250" y="160" text-anchor="middle" font-size="11">到期日</text>
+
+                    <!-- 说明 -->
+                    <text x="200" y="175" text-anchor="middle" font-size="11" fill="#666">
+                        期权合约的最后有效日期，过期作废
+                    </text>
+                </svg>
+            `
+
+                        case 5: // In the Money 价内
+                        case 6: // At the Money 平价
+                        case 7: // Out of the Money 价外
+                            // 这三个术语共用一个对比图
+                            const labels = ["价外 (OTM)", "平价 (ATM)", "价内 (ITM)"]
+                            const colors = ["#f5222d", "#faad14", "#52c41a"]
+                            let xPos = id === 5 ? 250 : (id === 6 ? 200 : 150)
+
+                            return `
+                <svg width="100%" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- 坐标轴 -->
+                    <line x1="100" y1="150" x2="300" y2="150" stroke="#333" stroke-width="2"/>
+                    <text x="310" y="150" text-anchor="start" font-size="12">股价 (S)</text>
+
+                    <!-- 行权价线 -->
+                    <line x1="200" y1="130" x2="200" y2="170" stroke="#333" stroke-width="2"/>
+                    <text x="200" y="180" text-anchor="middle" font-size="12">行权价 (K)</text>
+
+                    <!-- 三个区域 -->
+                    <rect x="100" y="100" width="100" height="40" rx="3" fill="${id === 7 ? '#f5222d33' : '#f0f0f0'}" stroke="${id === 7 ? '#f5222d' : '#ccc'}" stroke-width="1"/>
+                    <rect x="200" y="100" width="1" height="40" rx="0" fill="${id === 6 ? '#faad1433' : 'none'}" stroke="${id === 6 ? '#faad14' : 'none'}" stroke-width="1"/>
+                    <rect x="200" y="100" width="100" height="40" rx="3" fill="${id === 5 ? '#52c41a33' : '#f0f0f0'}" stroke="${id === 5 ? '#52c41a' : '#ccc'}" stroke-width="1"/>
+
+                    <!-- 标记当前状态 -->
+                    <circle cx="${xPos}" cy="150" r="6" fill="${colors[id - 5]}"/>
+                    <line x1="${xPos}" y1="120" x2="${xPos}" y2="150" stroke="${colors[id - 5]}" stroke-width="2" stroke-dasharray="3,3"/>
+
+                    <!-- 标签 -->
+                    <text x="150" y="125" text-anchor="middle" font-size="12" fill="#666">${labels[0]}</text>
+                    <text x="200" y="95" text-anchor="middle" font-size="12" fill="#666">${labels[1]}</text>
+                    <text x="250" y="125" text-anchor="middle" font-size="12" fill="#666">${labels[2]}</text>
+
+                    <!-- 看涨期权说明 -->
+                    <g transform="translate(120, 60)">
+                        <text x="0" y="-30" font-size="12" font-weight="bold">看涨期权</text>
+                        <text x="0" y="-10" font-size="11" fill="#666">ATM: S ≈ K</text>
+                        <text x="0" y="5" font-size="11" fill="#666">ITM: S > K</text>
+                        <text x="0" y="20" font-size="11" fill="#666">OTM: S < K</text>
+
+                    </g>
+
+                    <!-- 看跌期权说明 -->
+                    <g transform="translate(250, 60)">
+                        <text x="0" y="-30" font-size="12" font-weight="bold">看跌期权</text>
+                        <text x="0" y="-10" font-size="11" fill="#666">ITM: S < K</text>
+                        <text x="0" y="5" font-size="11" fill="#666">ATM: S ≈ K</text>
+                        <text x="0" y="20" font-size="11" fill="#666">OTM: S > K</text>
+                    </g>
+                </svg>
+            `
+
+                        // 接在getTermSvg函数的switch语句中
+                        case 8: // Intrinsic Value 内在价值
+                            return `
+        <svg width="100%" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">内在价值 = 标的价格 - 行权价 (价内情况)</text>
+
+            <!-- 股价柱形 -->
+            <rect x="120" y="80" width="60" height="70" rx="3" fill="#165DFF" fill-opacity="0.7"/>
+            <text x="150" y="70" text-anchor="middle" font-size="12">股价 $175</text>
+            <text x="150" y="160" text-anchor="middle" font-size="10">S</text>
+
+            <!-- 行权价柱形 -->
+            <rect x="220" y="100" width="60" height="50" rx="3" fill="#722ED1" fill-opacity="0.7"/>
+            <text x="250" y="90" text-anchor="middle" font-size="12">行权价 $170</text>
+            <text x="250" y="160" text-anchor="middle" font-size="10">K</text>
+
+            <!-- 内在价值差额 -->
+            <rect x="120" y="80" width="60" height="20" rx="3" fill="#52c41a" fill-opacity="0.7"/>
+            <line x1="150" y1="80" x2="250" y2="80" stroke="#52c41a" stroke-width="2" stroke-dasharray="4,2"/>
+            <rect x="220" y="80" width="60" height="20" rx="3" fill="#52c41a" fill-opacity="0.3"/>
+            <text x="190" y="75" text-anchor="middle" font-size="12" fill="#52c41a">内在价值 $5</text>
+
+            <!-- 说明 -->
+            <text x="200" y="180" text-anchor="middle" font-size="11" fill="#666">
+                价内期权立即行权可获得的利润，价外期权内在价值为0
+            </text>
+        </svg>
+    `
+
+                        case 9: // Extrinsic Value / Time Value 外在价值/时间价值
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 总权利金 -->
+            <rect x="150" y="80" width="100" height="100" rx="3" fill="#165DFF" fill-opacity="0.3"/>
+            <rect x="150" y="80" width="100" height="100" rx="3" fill="none" stroke="#165DFF" stroke-width="2"/>
+            <text x="200" y="70" text-anchor="middle" font-size="12">期权价格 $7</text>
+
+            <!-- 内在价值部分 -->
+            <rect x="150" y="130" width="100" height="50" rx="3" fill="#52c41a" fill-opacity="0.5"/>
+            <text x="200" y="155" text-anchor="middle" font-size="12" fill="#333">内在价值 $5</text>
+
+            <!-- 外在价值部分 -->
+            <rect x="150" y="80" width="100" height="50" rx="3" fill="#faad14" fill-opacity="0.5"/>
+            <text x="200" y="105" text-anchor="middle" font-size="12" fill="#333">外在价值 $2</text>
+
+            <!-- 公式 -->
+            <text x="200" y="200" text-anchor="middle" font-size="12" font-weight="bold">
+                外在价值 = 期权价格 - 内在价值
+            </text>
+
+            <!-- 时间因素图标 -->
+            <g transform="translate(320, 120)">
+                <circle cx="0" cy="0" r="15" fill="none" stroke="#86909C" stroke-width="2"/>
+                <line x1="0" y1="0" x2="0" y2="-12" stroke="#86909C" stroke-width="2"/>
+                <line x1="0" y1="0" x2="8" y2="8" stroke="#86909C" stroke-width="2"/>
+                <text x="0" y="30" text-anchor="middle" font-size="10" fill="#86909C">时间价值</text>
+            </g>
+        </svg>
+    `
+
+                        case 10: // Implied Volatility 隐含波动率
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 坐标轴 -->
+            <line x1="80" y1="180" x2="320" y2="180" stroke="#333" stroke-width="2"/>
+            <line x1="80" y1="180" x2="80" y2="60" stroke="#333" stroke-width="2"/>
+            <text x="330" y="180" text-anchor="start" font-size="12">到期时间</text>
+            <text x="80" y="50" text-anchor="middle" font-size="12">期权价格</text>
+
+            <!-- 低波动率曲线 -->
+            <path d="M80,140 Q140,120 200,130 T320,110" fill="none" stroke="#165DFF" stroke-width="2"/>
+            <text x="150" y="150" text-anchor="middle" font-size="11" fill="#165DFF">低IV (30%)</text>
+
+            <!-- 高波动率曲线 -->
+            <path d="M80,160 Q140,80 200,120 T320,70" fill="none" stroke="#722ED1" stroke-width="2"/>
+            <text x="350" y="70" text-anchor="middle" font-size="11" fill="#722ED1">高IV (80%)</text>
+
+            <!-- 波动率对比 -->
+            <g transform="translate(150, 40)">
+                <text x="0" y="0" font-size="12" font-weight="bold">隐含波动率对比</text>
+                <line x1="0" y1="15" x2="40" y2="15" stroke="#165DFF" stroke-width="2"/>
+                <text x="45" y="20" font-size="11">波动率低 → 期权价格低</text>
+
+                <line x1="0" y1="35" x2="40" y2="35" stroke="#722ED1" stroke-width="2"/>
+                <text x="45" y="40" font-size="11">波动率高 → 期权价格高</text>
+            </g>
+
+            <!-- 图例 -->
+            <circle cx="300" cy="40" r="8" fill="#faad14"/>
+            <text x="315" y="44" font-size="12">财报前IV通常升高</text>
+        </svg>
+    `
+
+                        case 11: // Delta 德尔塔
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 坐标轴 -->
+            <line x1="80" y1="180" x2="320" y2="180" stroke="#333" stroke-width="2"/>
+            <line x1="80" y1="180" x2="80" y2="60" stroke="#333" stroke-width="2"/>
+            <text x="330" y="180" text-anchor="start" font-size="12">标的价格变化 ($)</text>
+            <text x="80" y="50" text-anchor="middle" font-size="12">期权价格变化 ($)</text>
+
+            <!-- Delta=0.2的线 (浅度价外看涨) -->
+            <line x1="80" y1="180" x2="320" y2="128" stroke="#999" stroke-width="2" stroke-dasharray="5,3"/>
+            <text x="120" y="170" text-anchor="middle" font-size="11" fill="#666">Δ=0.2</text>
+
+            <!-- Delta=0.5的线 (平价) -->
+            <line x1="80" y1="180" x2="320" y2="100" stroke="#faad14" stroke-width="2"/>
+            <text x="180" y="140" text-anchor="middle" font-size="11" fill="#faad14">Δ=0.5 (ATM)</text>
+
+            <!-- Delta=0.8的线 (深度价内看涨) -->
+            <line x1="80" y1="180" x2="320" y2="72" stroke="#165DFF" stroke-width="2"/>
+            <text x="280" y="90" text-anchor="middle" font-size="11" fill="#165DFF">Δ=0.8 (ITM)</text>
+
+            <!-- 说明 -->
+            <g transform="translate(200, 40)">
+                <text x="0" y="0" text-anchor="middle" font-size="12" font-weight="bold">Delta 含义</text>
+                <text x="0" y="20" text-anchor="middle" font-size="11" fill="#666">期权价格对标的价格变化的敏感度</text>
+                <text x="0" y="40" text-anchor="middle" font-size="11" fill="#666">看涨期权: 0到1 | 看跌期权: -1到0</text>
+            </g>
+        </svg>
+    `
+
+                        case 12: // Gamma 伽马
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 坐标轴 -->
+            <line x1="80" y1="180" x2="320" y2="180" stroke="#333" stroke-width="2"/>
+            <line x1="80" y1="180" x2="80" y2="60" stroke="#333" stroke-width="2"/>
+            <text x="330" y="180" text-anchor="start" font-size="12">标的价格</text>
+            <text x="80" y="50" text-anchor="middle" font-size="12">Delta值</text>
+
+            <!-- 高Gamma曲线 (平价附近变化快) -->
+            <path d="M80,170 Q160,140 200,100 T320,30" fill="none" stroke="#722ED1" stroke-width="2"/>
+            <text x="200" y="70" text-anchor="middle" font-size="11" fill="#722ED1">高Gamma</text>
+
+            <!-- 低Gamma曲线 (变化平缓) -->
+            <path d="M80,160 Q160,150 200,100 T320,40" fill="none" stroke="#165DFF" stroke-width="2" stroke-dasharray="5,3"/>
+            <text x="120" y="140" text-anchor="middle" font-size="11" fill="#165DFF">低Gamma</text>
+
+            <!-- 行权价标记 -->
+            <line x1="200" y1="180" x2="200" y2="160" stroke="#333" stroke-width="1" stroke-dasharray="3,2"/>
+            <text x="200" y="195" text-anchor="middle" font-size="11">行权价</text>
+
+            <!-- Gamma定义 -->
+            <text x="200" y="30" text-anchor="middle" font-size="12" font-weight="bold">Gamma = Delta的变化率</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                平价期权Gamma最高，标的价格变动对Delta影响最大
+            </text>
+        </svg>
+    `
+
+                        case 13: // Theta 西塔
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 坐标轴 -->
+            <line x1="80" y1="180" x2="320" y2="180" stroke="#333" stroke-width="2"/>
+            <line x1="80" y1="180" x2="80" y2="60" stroke="#333" stroke-width="2"/>
+            <text x="330" y="180" text-anchor="start" font-size="12">距到期日天数</text>
+            <text x="80" y="50" text-anchor="middle" font-size="12">期权价值 ($)</text>
+
+            <!-- 时间衰减曲线 -->
+            <path d="M80,100 Q160,110 220,130 T320,170" fill="none" stroke="#f5222d" stroke-width="2"/>
+            <text x="150" y="90" text-anchor="middle" font-size="11" fill="#f5222d">期权价值</text>
+
+            <!-- 时间点标记 -->
+            <line x1="140" y1="180" x2="140" y2="110" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+            <text x="140" y="195" text-anchor="middle" font-size="10">60天</text>
+
+            <line x1="220" y1="180" x2="220" y2="130" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+            <text x="220" y="195" text-anchor="middle" font-size="10">30天</text>
+
+            <line x1="280" y1="180" x2="280" y2="160" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+            <text x="280" y="195" text-anchor="middle" font-size="10">7天</text>
+
+            <!-- Theta值标记 (每日衰减) -->
+            <line x1="260" y1="150" x2="300" y2="150" stroke="#faad14" stroke-width="2" stroke-dasharray="4,2"/>
+            <text x="280" y="140" text-anchor="middle" font-size="10" fill="#faad14">Theta=-0.04</text>
+
+            <!-- 说明 -->
+            <text x="200" y="30" text-anchor="middle" font-size="12" font-weight="bold">Theta (时间衰减)</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                期权随时间流逝损失的价值，到期前加速衰减
+            </text>
+        </svg>
+    `
+
+                        case 14: // Vega 维加
+                            return `
+        <svg width="100%" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- 坐标轴 -->
+            <line x1="100" y1="160" x2="300" y2="160" stroke="#333" stroke-width="2"/>
+            <line x1="100" y1="160" x2="100" y2="60" stroke="#333" stroke-width="2"/>
+            <text x="310" y="160" text-anchor="start" font-size="12">隐含波动率 (%)</text>
+            <text x="100" y="50" text-anchor="middle" font-size="12">期权价格 ($)</text>
+
+            <!-- Vega关系线 -->
+            <line x1="100" y1="140" x2="300" y2="80" stroke="#722ED1" stroke-width="2"/>
+            <text x="250" y="90" text-anchor="middle" font-size="11" fill="#722ED1">Vega=0.12</text>
+
+            <!-- 数据点 -->
+            <circle cx="150" cy="128" r="4" fill="#333"/>
+            <text x="150" y="120" text-anchor="middle" font-size="10">IV=30%</text>
+
+            <circle cx="250" cy="92" r="4" fill="#333"/>
+            <text x="250" y="84" text-anchor="middle" font-size="10">IV=80%</text>
+
+            <!-- 变化箭头 -->
+            <line x1="150" y1="128" x2="250" y2="92" stroke="#faad14" stroke-width="1" stroke-dasharray="3,2"/>
+            <polygon points="250,92 242,96 246,86" fill="#faad14"/>
+            <text x="200" y="105" text-anchor="middle" font-size="10" fill="#faad14">+5.6$</text>
+
+            <!-- 说明 -->
+            <text x="200" y="30" text-anchor="middle" font-size="12" font-weight="bold">Vega 含义</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                波动率每变化1%，期权价格的变化量 (正值)
+            </text>
+        </svg>
+    `
+
+                        case 15: // Rho 罗
+                            return `
+        <svg width="100%" height="180" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- 利率与期权价格关系 -->
+            <rect x="120" y="80" width="80" height="40" rx="3" fill="#f0f0f0" stroke="#ccc" stroke-width="2"/>
+            <text x="160" y="105" text-anchor="middle" font-size="14">利率 2%</text>
+            <text x="160" y="125" text-anchor="middle" font-size="12">看涨期权价格: $5.20</text>
+
+            <rect x="240" y="70" width="80" height="40" rx="3" fill="#e6f7ff" stroke="#165DFF" stroke-width="2"/>
+            <text x="280" y="95" text-anchor="middle" font-size="14">利率 3%</text>
+            <text x="280" y="115" text-anchor="middle" font-size="12">看涨期权价格: $5.25</text>
+
+            <!-- 箭头 -->
+            <line x1="200" y1="100" x2="240" y2="100" stroke="#165DFF" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <text x="220" y="90" text-anchor="middle" font-size="11">利率上升1%</text>
+
+            <!-- 看跌期权相反关系 -->
+            <text x="200" y="150" text-anchor="middle" font-size="12" fill="#666">
+                看涨期权: 利率↑ → 价格↑ (Rho为正) | 看跌期权: 利率↑ → 价格↓ (Rho为负)
+            </text>
+
+            <!-- 定义箭头标记 (复用之前的定义，若不存在需添加) -->
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#165DFF"/>
+                </marker>
+            </defs>
+        </svg>
+    `
+                        // 接在getTermSvg函数的switch语句中
+                        case 16: // Bid-Ask Spread 买卖价差
+                            return `
+        <svg width="100%" height="180" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- 买卖价展示 -->
+            <rect x="140" y="80" width="60" height="40" rx="3" fill="#f5222d" fill-opacity="0.3"/>
+            <rect x="140" y="80" width="60" height="40" rx="3" fill="none" stroke="#f5222d" stroke-width="2"/>
+            <text x="170" y="105" text-anchor="middle" font-size="14">买价</text>
+            <text x="170" y="125" text-anchor="middle" font-size="12">$2.10</text>
+
+            <rect x="240" y="80" width="60" height="40" rx="3" fill="#52c41a" fill-opacity="0.3"/>
+            <rect x="240" y="80" width="60" height="40" rx="3" fill="none" stroke="#52c41a" stroke-width="2"/>
+            <text x="270" y="105" text-anchor="middle" font-size="14">卖价</text>
+            <text x="270" y="125" text-anchor="middle" font-size="12">$2.20</text>
+
+            <!-- 价差标记 -->
+            <line x1="200" y1="100" x2="240" y2="100" stroke="#faad14" stroke-width="2" stroke-dasharray="4,2"/>
+            <text x="220" y="90" text-anchor="middle" font-size="11" fill="#faad14">价差 $0.10</text>
+
+            <!-- 流动性指示器 -->
+            <g transform="translate(200, 150)">
+                <text x="0" y="0" text-anchor="middle" font-size="12" font-weight="bold">买卖价差 = 卖价 - 买价</text>
+                <text x="0" y="20" text-anchor="middle" font-size="11" fill="#666">
+                    价差越小，流动性越好 | 价差越大，交易成本越高
+                </text>
+            </g>
+        </svg>
+    `
+
+                        case 17: // Open Interest 未平仓量
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">未平仓量 (Open Interest)</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                市场上尚未平仓的期权合约总数
+            </text>
+
+            <!-- 坐标轴 -->
+            <line x1="80" y1="180" x2="320" y2="180" stroke="#333" stroke-width="2"/>
+            <line x1="80" y1="180" x2="80" y2="80" stroke="#333" stroke-width="2"/>
+            <text x="330" y="180" text-anchor="start" font-size="12">行权价 ($)</text>
+            <text x="80" y="70" text-anchor="middle" font-size="12">合约数量</text>
+
+            <!-- 看涨期权未平仓量柱形 -->
+            <rect x="110" y="150" width="30" height="30" rx="2" fill="#165DFF" fill-opacity="0.7"/>
+            <rect x="160" y="120" width="30" height="60" rx="2" fill="#165DFF" fill-opacity="0.7"/>
+            <rect x="210" y="100" width="30" height="80" rx="2" fill="#165DFF" fill-opacity="0.7"/>
+            <rect x="260" y="140" width="30" height="40" rx="2" fill="#165DFF" fill-opacity="0.7"/>
+
+            <!-- 行权价标签 -->
+            <text x="125" y="195" text-anchor="middle" font-size="10">140</text>
+            <text x="175" y="195" text-anchor="middle" font-size="10">150</text>
+            <text x="225" y="195" text-anchor="middle" font-size="10">160</text>
+            <text x="275" y="195" text-anchor="middle" font-size="10">170</text>
+
+            <!-- 含义说明 -->
+            <text x="200" y="210" text-anchor="middle" font-size="11" fill="#666">
+                反映市场深度，高未平仓量通常表示该价位有较强共识
+            </text>
+        </svg>
+    `
+
+                        case 18: // Volume 成交量
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">成交量 (Volume)</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                当日成交的期权合约数量
+            </text>
+
+            <!-- 坐标轴 -->
+            <line x1="80" y1="180" x2="320" y2="180" stroke="#333" stroke-width="2"/>
+            <line x1="80" y1="180" x2="80" y2="80" stroke="#333" stroke-width="2"/>
+            <text x="330" y="180" text-anchor="start" font-size="12">日期</text>
+            <text x="80" y="70" text-anchor="middle" font-size="12">合约数量</text>
+
+            <!-- 成交量柱形 -->
+            <rect x="100" y="150" width="30" height="30" rx="2" fill="#722ED1" fill-opacity="0.7"/>
+            <rect x="140" y="130" width="30" height="50" rx="2" fill="#722ED1" fill-opacity="0.7"/>
+            <rect x="180" y="90" width="30" height="90" rx="2" fill="#722ED1" fill-opacity="0.7"/>
+            <rect x="220" y="160" width="30" height="20" rx="2" fill="#722ED1" fill-opacity="0.7"/>
+            <rect x="260" y="120" width="30" height="60" rx="2" fill="#722ED1" fill-opacity="0.7"/>
+
+            <!-- 日期标签 -->
+            <text x="115" y="195" text-anchor="middle" font-size="10">周一</text>
+            <text x="155" y="195" text-anchor="middle" font-size="10">周二</text>
+            <text x="195" y="195" text-anchor="middle" font-size="10">周三</text>
+            <text x="235" y="195" text-anchor="middle" font-size="10">周四</text>
+            <text x="275" y="195" text-anchor="middle" font-size="10">周五</text>
+
+            <!-- 放量标记 -->
+            <circle cx="195" cy="80" r="5" fill="#faad14"/>
+            <text x="195" y="70" text-anchor="middle" font-size="10" fill="#faad14">放量</text>
+
+            <!-- 说明 -->
+            <text x="200" y="210" text-anchor="middle" font-size="11" fill="#666">
+                高成交量通常表示市场关注度高，价格变动可能更显著
+            </text>
+        </svg>
+    `
+
+                        case 19: // Assignment 指派/行权配对
+                            return `
+        <svg width="100%" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- 参与者 -->
+            <circle cx="150" cy="100" r="30" fill="#e6f7ff" stroke="#165DFF" stroke-width="2"/>
+            <text x="150" y="95" text-anchor="middle" font-size="12">期权买方</text>
+            <text x="150" y="115" text-anchor="middle" font-size="11">行权方</text>
+
+            <circle cx="250" cy="100" r="30" fill="#fff1f0" stroke="#f5222d" stroke-width="2"/>
+            <text x="250" y="95" text-anchor="middle" font-size="12">期权卖方</text>
+            <text x="250" y="115" text-anchor="middle" font-size="11">被指派方</text>
+
+            <!-- 行权流程箭头 -->
+            <line x1="180" y1="100" x2="220" y2="100" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <text x="200" y="85" text-anchor="middle" font-size="11">行权通知</text>
+
+            <!-- 履约内容 -->
+            <g transform="translate(200, 150)">
+                <rect x="-120" y="0" width="80" height="30" rx="3" fill="#f0f0f0" stroke="#ccc" stroke-width="1"/>
+                <text x="-80" y="10" text-anchor="middle" font-size="10">交付股票</text>
+                <text x="-80" y="25" text-anchor="middle" font-size="9">看涨期权</text>
+
+                <rect x="40" y="0" width="80" height="30" rx="3" fill="#f0f0f0" stroke="#ccc" stroke-width="1"/>
+                <text x="80" y="10" text-anchor="middle" font-size="10">支付行权价</text>
+                <text x="80" y="25" text-anchor="middle" font-size="9">现金</text>
+            </g>
+
+            <!-- 说明 -->
+            <text x="200" y="190" text-anchor="middle" font-size="11" fill="#666">
+                卖方被强制履约的过程，需按合约规定进行股票与现金交换
+            </text>
+        </svg>
+    `
+
+                        case 20: // LEAPS 长期期权
+                            return `
+        <svg width="100%" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- 时间线 -->
+            <line x1="80" y1="120" x2="320" y2="120" stroke="#333" stroke-width="2"/>
+
+            <!-- 现在标记 -->
+            <line x1="120" y1="100" x2="120" y2="140" stroke="#faad14" stroke-width="2"/>
+            <text x="120" y="90" text-anchor="middle" font-size="12" fill="#faad14">现在</text>
+
+            <!-- 短期期权到期 -->
+            <line x1="180" y1="110" x2="180" y2="130" stroke="#165DFF" stroke-width="2"/>
+            <text x="180" y="100" text-anchor="middle" font-size="11">短期期权</text>
+            <text x="180" y="150" text-anchor="middle" font-size="10">3个月</text>
+
+            <!-- LEAPS到期 -->
+            <line x1="300" y1="90" x2="300" y2="150" stroke="#722ED1" stroke-width="2"/>
+            <text x="300" y="80" text-anchor="middle" font-size="11">LEAPS</text>
+            <text x="300" y="165" text-anchor="middle" font-size="10">2年</text>
+
+            <!-- 对比说明 -->
+            <rect x="200" y="50" width="160" height="30" rx="3" fill="#f5f5f5" stroke="#eee" stroke-width="1"/>
+            <text x="280" y="70" text-anchor="middle" font-size="11">长期期权 (1-3年到期)</text>
+
+            <!-- 特点标签 -->
+            <g transform="translate(150, 170)">
+                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                    <text x="0" y="0" font-size="10">时间价值更高</text>
+                </span>
+                <text x="80" y="0" font-size="10" fill="#666">|</text>
+                <text x="100" y="0" font-size="10" fill="#666">适合长期策略</text>
+            </g>
+        </svg>
+    `
+
+                        case 21: // Rolling (an option) 移仓/展期
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">期权移仓 (Rolling)</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                平掉现有仓位，同时开立到期日更远或行权价不同的新仓位
+            </text>
+
+            <!-- 时间线 -->
+            <line x1="100" y1="120" x2="300" y2="120" stroke="#333" stroke-width="2"/>
+
+            <!-- 原期权到期日 -->
+            <line x1="160" y1="110" x2="160" y2="130" stroke="#f5222d" stroke-width="2"/>
+            <text x="160" y="100" text-anchor="middle" font-size="11">原到期日</text>
+
+            <!-- 新期权到期日 -->
+            <line x1="240" y1="110" x2="240" y2="130" stroke="#165DFF" stroke-width="2"/>
+            <text x="240" y="100" text-anchor="middle" font-size="11">新到期日</text>
+
+            <!-- 移仓流程 -->
+            <g transform="translate(130, 70)">
+                <!-- 平仓操作 -->
+                <rect x="10" y="10" width="80" height="30" rx="3" fill="#fff1f0" stroke="#f5222d" stroke-width="1"/>
+                <text x="50" y="30" text-anchor="middle" font-size="10">平仓：SPY 450Call</text>
+
+                <!-- 新仓操作 -->
+                <rect x="110" y="10" width="100" height="30" rx="3" fill="#e6f7ff" stroke="#165DFF" stroke-width="1"/>
+                <text x="160" y="30" text-anchor="middle" font-size="10">开新仓：SPY 455Call (下月)</text>
+
+                <!-- 箭头连接 -->
+                <line x1="90" y1="25" x2="110" y2="25" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            </g>
+
+            <!-- 移仓目的 -->
+            <text x="200" y="180" text-anchor="middle" font-size="11" fill="#666">
+                调整风险敞口、延长持仓时间或修正行权价以适应市场变化
+            </text>
+
+            <!-- 现在时间点 -->
+            <line x1="120" y1="105" x2="120" y2="135" stroke="#faad14" stroke-width="1.5"/>
+            <text x="120" y="145" text-anchor="middle" font-size="10" fill="#faad14">当前时间</text>
+        </svg>
+    `
+
+
+                        case 22: // Early Assignment 提前指派
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">提前指派风险</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                美式期权在到期前被行权的风险，常见于除息日前
+            </text>
+
+            <!-- 时间线 -->
+            <line x1="100" y1="120" x2="300" y2="120" stroke="#333" stroke-width="2"/>
+
+            <!-- 关键时间点 -->
+            <line x1="120" y1="110" x2="120" y2="130" stroke="#333" stroke-width="2"/>
+            <text x="120" y="100" text-anchor="middle" font-size="11">卖出期权</text>
+
+            <line x1="200" y1="100" x2="200" y2="140" stroke="#f5222d" stroke-width="2"/>
+            <text x="200" y="90" text-anchor="middle" font-size="11" fill="#f5222d">除息日</text>
+
+            <line x1="280" y1="110" x2="280" y2="130" stroke="#333" stroke-width="2"/>
+            <text x="280" y="100" text-anchor="middle" font-size="11">到期日</text>
+
+            <!-- 提前指派发生区间 -->
+            <rect x="180" y="110" width="40" height="20" rx="2" fill="#fff1f0" stroke="#f5222d" stroke-width="1"/>
+            <text x="200" y="145" text-anchor="middle" font-size="10" fill="#f5222d">高风险期</text>
+
+            <!-- 风险原因 -->
+            <g transform="translate(200, 160)">
+                <rect x="-140" y="0" width="280" height="40" rx="3" fill="#fff1f0" stroke="#f5222d" stroke-width="1" stroke-dasharray="2,2"/>
+                <text x="0" y="15" text-anchor="middle" font-size="10">深度价内看涨期权在除息前易被提前指派</text>
+                <text x="0" y="30" text-anchor="middle" font-size="9">买方为获取股息而提前行权</text>
+            </g>
+
+            <!-- 风险提示 -->
+            <text x="200" y="210" text-anchor="middle" font-size="11" fill="#f5222d">
+                提示：持有价内期权临近除息需关注提前指派风险
+            </text>
+        </svg>
+    `
+                        case 23: // Implied Volatility Rank 隐含波动率分位
+                            return `
+        <svg width="100%" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">隐含波动率分位 (IVR)</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                当前IV在最近一年区间内的相对位置 (0-100)
+            </text>
+
+            <!-- 百分位刻度 -->
+            <line x1="100" y1="120" x2="300" y2="120" stroke="#333" stroke-width="2"/>
+
+            <!-- 刻度标记 -->
+            <line x1="100" y1="115" x2="100" y2="125" stroke="#333" stroke-width="1"/>
+            <text x="100" y="140" text-anchor="middle" font-size="10">0%</text>
+
+            <line x1="200" y1="115" x2="200" y2="125" stroke="#333" stroke-width="1"/>
+            <text x="200" y="140" text-anchor="middle" font-size="10">50%</text>
+
+            <line x1="300" y1="115" x2="300" y2="125" stroke="#333" stroke-width="1"/>
+            <text x="300" y="140" text-anchor="middle" font-size="10">100%</text>
+
+            <!-- 当前IVR位置 (示例90%) -->
+            <line x1="280" y1="100" x2="280" y2="140" stroke="#722ED1" stroke-width="2"/>
+            <text x="280" y="90" text-anchor="middle" font-size="12" fill="#722ED1">IVR=90%</text>
+
+            <!-- 一年IV范围阴影 -->
+            <rect x="100" y="120" width="200" height="30" rx="0" fill="#f0f0f0" stroke="#ccc" stroke-width="1"/>
+            <text x="150" y="165" text-anchor="middle" font-size="10" fill="#666">一年IV范围</text>
+
+            <!-- 解读 -->
+            <g transform="translate(200, 175)">
+                <text x="0" y="0" text-anchor="middle" font-size="11" fill="#666">
+                    高IVR (如>70%)：期权较贵，适合卖方；低IVR：适合买方
+                </text>
+            </g>
+        </svg>
+    `
+                        case 24: // European Option 欧式期权
+                        case 25: // American Option 美式期权
+                            // 美式与欧式期权对比图
+                            const isAmerican = id === 25
+                            return `
+        <svg width="100%" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">
+                ${isAmerican ? '美式期权' : '欧式期权'} (${isAmerican ? 'American' : 'European'})
+            </text>
+
+            <!-- 时间线 -->
+            <line x1="100" y1="100" x2="300" y2="100" stroke="#333" stroke-width="2"/>
+
+            <!-- 购买日 -->
+            <line x1="120" y1="90" x2="120" y2="110" stroke="#333" stroke-width="2"/>
+            <text x="120" y="80" text-anchor="middle" font-size="11">购买日</text>
+
+            <!-- 到期日 -->
+            <line x1="280" y1="90" x2="280" y2="110" stroke="#f5222d" stroke-width="2"/>
+            <text x="280" y="80" text-anchor="middle" font-size="11">到期日</text>
+
+            <!-- 可行权区间 -->
+            ${isAmerican ? `
+                <!-- 美式：整个区间可行权 -->
+                <rect x="120" y="85" width="160" height="30" rx="2" fill="#52c41a33" stroke="#52c41a" stroke-width="1"/>
+                <text x="200" y="75" text-anchor="middle" font-size="11" fill="#52c41a">可行权区间</text>
+
+                <!-- 多个行权时点示例 -->
+                <line x1="160" y1="95" x2="160" y2="105" stroke="#52c41a" stroke-width="1"/>
+                <line x1="200" y1="95" x2="200" y2="105" stroke="#52c41a" stroke-width="1"/>
+                <line x1="240" y1="95" x2="240" y2="105" stroke="#52c41a" stroke-width="1"/>
+            ` : `
+                <!-- 欧式：仅到期日可行权 -->
+                <line x1="280" y1="85" x2="280" y2="115" stroke="#faad14" stroke-width="2"/>
+                <text x="280" y="65" text-anchor="middle" font-size="11" fill="#faad14">仅到期日可行权</text>
+            `}
+
+            <!-- 说明 -->
+            <text x="200" y="140" text-anchor="middle" font-size="12" font-weight="bold">
+                ${isAmerican ? '可在到期前任何交易日行权' : '只能在到期日行权'}
+            </text>
+
+            <!-- 实例 -->
+            <text x="200" y="165" text-anchor="middle" font-size="11" fill="#666">
+                ${isAmerican ? '实例：美股普通股票期权' : '实例：SPX指数期权'}
+            </text>
+        </svg>
+    `
+
+                        case 26: // Straddle 跨式
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">跨式策略 (Straddle)</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                同时买入相同行权价和到期日的看涨与看跌期权
+            </text>
+
+            <!-- 期权组成 -->
+            <g transform="translate(140, 70)">
+                <!-- 买入看涨 -->
+                <rect x="10" y="10" width="120" height="40" rx="3" fill="#e6f7ff" stroke="#165DFF" stroke-width="2"/>
+                <text x="70" y="30" text-anchor="middle" font-size="11">买入 500Call</text>
+
+                <!-- 买入看跌 -->
+                <rect x="10" y="60" width="120" height="40" rx="3" fill="#f1f0ff" stroke="#722ED1" stroke-width="2"/>
+                <text x="70" y="80" text-anchor="middle" font-size="11">买入 500Put</text>
+
+                <!-- 相同行权价标记 -->
+                <line x1="140" y1="30" x2="160" y2="30" stroke="#165DFF" stroke-width="1"/>
+                <line x1="140" y1="80" x2="160" y2="80" stroke="#722ED1" stroke-width="1"/>
+                <line x1="160" y1="30" x2="160" y2="80" stroke="#faad14" stroke-width="1" stroke-dasharray="3,2"/>
+                <text x="170" y="55" text-anchor="start" font-size="10" fill="#faad14">相同行权价</text>
+            </g>
+
+            <!-- 收益曲线 -->
+            <g transform="translate(100, 150)">
+                <line x1="0" y1="50" x2="200" y2="50" stroke="#333" stroke-width="1"/>
+                <line x1="100" y1="20" x2="100" y2="80" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+                <text x="100" y="90" text-anchor="middle" font-size="10">行权价 (500)</text>
+
+                <!-- V形收益曲线 -->
+                <path d="M30,80 L100,50 L170,80" fill="none" stroke="#faad14" stroke-width="2"/>
+                <text x="100" y="40" text-anchor="middle" font-size="10" fill="#faad14">收益曲线</text>
+
+                <!-- 平衡点 -->
+                <circle cx="60" cy="50" r="3" fill="#333"/>
+                <circle cx="140" cy="50" r="3" fill="#333"/>
+                <text x="60" y="40" text-anchor="middle" font-size="9">平衡点</text>
+                <text x="140" y="40" text-anchor="middle" font-size="9">平衡点</text>
+            </g>
+
+            <!-- 策略目的 -->
+            <text x="200" y="255" text-anchor="middle" font-size="11" fill="#666">
+                预期标的价格将发生大幅波动，无论涨跌都可能获利
+            </text>
+        </svg>
+    `
+
+                        case 27: // Strangle 宽跨式
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">宽跨式策略 (Strangle)</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                买入不同行权价的看涨与看跌期权，成本低于跨式
+            </text>
+
+            <!-- 期权组成 -->
+            <g transform="translate(50, 70)">
+                <!-- 买入看涨 (高行权价) -->
+                <rect x="10" y="10" width="100" height="40" rx="3" fill="#e6f7ff" stroke="#165DFF" stroke-width="2"/>
+                <text x="60" y="30" text-anchor="middle" font-size="11">买入 330Call</text>
+
+                <!-- 买入看跌 (低行权价) -->
+                <rect x="190" y="10" width="100" height="40" rx="3" fill="#f1f0ff" stroke="#722ED1" stroke-width="2"/>
+                <text x="240" y="30" text-anchor="middle" font-size="11">买入 320Put</text>
+
+                <!-- 价差标记 -->
+                <line x1="200" y1="30" x2="150" y2="45" stroke="#165DFF" stroke-width="1"/>
+                <line x1="200" y1="45" x2="100" y2="45" stroke="#faad14" stroke-width="1" stroke-dasharray="3,2"/>
+                <line x1="150" y1="45" x2="100" y2="30" stroke="#722ED1" stroke-width="1"/>
+                <text x="150" y="65" text-anchor="middle" font-size="10" fill="#faad14">行权价差额</text>
+            </g>
+
+            <!-- 收益曲线与区间 -->
+            <g transform="translate(80, 140)">
+                <line x1="0" y1="60" x2="240" y2="60" stroke="#333" stroke-width="1"/>
+                <text x="250" y="60" text-anchor="start" font-size="10">标的价格</text>
+
+                <!-- 行权价标记 -->
+                <line x1="60" y1="50" x2="60" y2="70" stroke="#722ED1" stroke-width="2"/>
+                <text x="60" y="80" text-anchor="middle" font-size="10">330 (Call)</text>
+
+                <line x1="180" y1="50" x2="180" y2="70" stroke="#165DFF" stroke-width="2"/>
+                <text x="180" y="80" text-anchor="middle" font-size="10">320 (Put)</text>
+
+                <!-- 收益曲线 -->
+                <path d="M0,90 L60,60 L180,60 L240,90" fill="none" stroke="#faad14" stroke-width="2"/>
+
+                <!-- 平衡点 -->
+                <circle cx="40" cy="60" r="3" fill="#333"/>
+                <circle cx="200" cy="60" r="3" fill="#333"/>
+
+                <!-- 亏损区间 -->
+                <rect x="60" y="55" width="120" height="10" rx="2" fill="#f5222d1a" stroke="#f5222d" stroke-width="1"/>
+                <text x="120" y="55" text-anchor="middle" font-size="9" fill="#f5222d">亏损区间</text>
+            </g>
+
+            <!-- 策略特点 -->
+            <text x="200" y="255" text-anchor="middle" font-size="11" fill="#666">
+                成本低于跨式，需要更大波动才能盈利
+            </text>
+        </svg>
+    `
+
+
+
+
+                        case 28: // Covered Call 备兑看涨
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 策略组成 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">备兑看涨策略</text>
+
+            <!-- 股票持仓 -->
+            <rect x="120" y="60" width="80" height="60" rx="5" fill="#f0f0f0" stroke="#ccc" stroke-width="2"/>
+            <text x="160" y="90" text-anchor="middle" font-size="14">持有股票</text>
+            <text x="160" y="110" text-anchor="middle" font-size="11">100股 AAPL</text>
+
+            <!-- 卖出看涨期权 -->
+            <rect x="240" y="60" width="80" height="60" rx="5" fill="#fff1f0" stroke="#f5222d" stroke-width="2"/>
+            <text x="280" y="90" text-anchor="middle" font-size="14">卖出看涨</text>
+            <text x="280" y="110" text-anchor="middle" font-size="11">AAPL 180C</text>
+
+            <!-- 组合关系 -->
+            <line x1="200" y1="90" x2="240" y2="90" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <text x="220" y="80" text-anchor="middle" font-size="11">+</text>
+
+            <!-- 收益图 -->
+            <g transform="translate(100, 150)">
+                <line x1="0" y1="40" x2="200" y2="40" stroke="#333" stroke-width="1"/>
+                <line x1="0" y1="40" x2="0" y2="0" stroke="#333" stroke-width="1"/>
+
+                <!-- 股票收益线 -->
+                <line x1="0" y1="40" x2="200" y2="0" stroke="#ccc" stroke-width="1" stroke-dasharray="4,2"/>
+
+                <!-- 备兑看涨收益线 -->
+                <line x1="0" y1="40" x2="100" y2="20" stroke="#165DFF" stroke-width="2"/>
+                <line x1="100" y1="20" x2="200" y2="20" stroke="#165DFF" stroke-width="2"/>
+
+                <!-- 行权价标记 -->
+                <line x1="100" y1="40" x2="100" y2="20" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+                <text x="100" y="50" text-anchor="middle" font-size="10">行权价</text>
+            </g>
+
+            <!-- 策略目的 -->
+            <text x="200" y="210" text-anchor="middle" font-size="11" fill="#666">
+                持有股票同时卖出看涨期权，增强收益，牺牲上行空间
+            </text>
+        </svg>
+    `
+
+                        case 29: // Protective Put 保护性看跌
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 策略组成 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">保护性看跌策略</text>
+
+            <!-- 股票持仓 -->
+            <rect x="120" y="60" width="80" height="60" rx="5" fill="#f0f0f0" stroke="#ccc" stroke-width="2"/>
+            <text x="160" y="90" text-anchor="middle" font-size="14">持有股票</text>
+            <text x="160" y="110" text-anchor="middle" font-size="11">100股 MSFT</text>
+
+            <!-- 买入看跌期权 -->
+            <rect x="240" y="60" width="80" height="60" rx="5" fill="#e6f7ff" stroke="#165DFF" stroke-width="2"/>
+            <text x="280" y="90" text-anchor="middle" font-size="14">买入看跌</text>
+            <text x="280" y="110" text-anchor="middle" font-size="11">MSFT 250P</text>
+
+            <!-- 组合关系 -->
+            <line x1="200" y1="90" x2="240" y2="90" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <text x="220" y="80" text-anchor="middle" font-size="11">+</text>
+
+            <!-- 收益图 -->
+            <g transform="translate(100, 150)">
+                <line x1="0" y1="40" x2="200" y2="40" stroke="#333" stroke-width="1"/>
+                <line x1="0" y1="40" x2="0" y2="0" stroke="#333" stroke-width="1"/>
+
+                <!-- 股票收益线 -->
+                <line x1="0" y1="40" x2="200" y2="0" stroke="#ccc" stroke-width="1" stroke-dasharray="4,2"/>
+
+                <!-- 保护性看跌收益线 -->
+                <line x1="0" y1="30" x2="80" y2="30" stroke="#722ED1" stroke-width="2"/>
+                <line x1="80" y1="30" x2="200" y2="0" stroke="#722ED1" stroke-width="2"/>
+
+                <!-- 行权价标记 -->
+                <line x1="80" y1="40" x2="80" y2="30" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+                <text x="80" y="50" text-anchor="middle" font-size="10">行权价</text>
+            </g>
+
+            <!-- 策略目的 -->
+            <text x="200" y="210" text-anchor="middle" font-size="11" fill="#666">
+                持有股票同时买入看跌期权，锁定下行风险，保留上行空间
+            </text>
+        </svg>
+    `
+
+                        case 30: // Cash-Secured Put 现金担保看跌期权
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 策略组成 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">现金担保看跌策略</text>
+
+            <!-- 现金储备 -->
+            <rect x="120" y="60" width="80" height="60" rx="5" fill="#f6ffed" stroke="#52c41a" stroke-width="2" stroke-dasharray="2,2"/>
+            <text x="160" y="90" text-anchor="middle" font-size="14">现金储备</text>
+            <text x="160" y="110" text-anchor="middle" font-size="11">$10,000</text>
+
+            <!-- 卖出看跌期权 -->
+            <rect x="240" y="60" width="80" height="60" rx="5" fill="#fff1f0" stroke="#f5222d" stroke-width="2"/>
+            <text x="280" y="90" text-anchor="middle" font-size="14">卖出看跌</text>
+            <text x="280" y="110" text-anchor="middle" font-size="11">GOOG 100P</text>
+
+            <!-- 组合关系 -->
+            <line x1="200" y1="90" x2="240" y2="90" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <text x="220" y="80" text-anchor="middle" font-size="11">+</text>
+
+            <!-- 两种结果 -->
+            <g transform="translate(100, 150)">
+                <!-- 情况1：股价高于行权价 -->
+                <rect x="-20" y="-10" width="120" height="40" rx="3" fill="#f6ffed" stroke="#52c41a" stroke-width="1" stroke-dasharray="2,2"/>
+                <text x="40" y="10" text-anchor="middle" font-size="10">股价 > 行权价</text>
+                <text x="40" y="25" text-anchor="middle" font-size="9">保留权利金，不接盘股票</text>
+
+                <!-- 情况2：股价低于行权价 -->
+                <rect x="140" y="-10" width="120" height="40" rx="3" fill="#fff1f0" stroke="#f5222d" stroke-width="1"/>
+                <text x="200" y="10" text-anchor="middle" font-size="10">股价 < 行权价</text>
+                <text x="200" y="25" text-anchor="middle" font-size="9">以行权价接盘股票</text>
+            </g>
+
+            <!-- 策略目的 -->
+            <text x="210" y="210" text-anchor="middle" font-size="11" fill="#666">
+                卖出看跌期权并准备足额现金，以目标价格买入股票或赚取权利金
+            </text>
+        </svg>
+    `
+                        // 接在getTermSvg函数的switch语句中
+                        case 31: // Vertical Spread 垂直价差
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">垂直价差策略</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                同类型、同到期日、不同行权价的期权组合
+            </text>
+
+            <!-- 牛市看涨期权价差示例 -->
+            <g transform="translate(100, 70)">
+                <!-- 买入低行权价看涨 -->
+                <rect x="-90" y="10" width="120" height="40" rx="3" fill="#e6f7ff" stroke="#165DFF" stroke-width="1"/>
+                <text x="-30" y="30" text-anchor="middle" font-size="10">买入 300Call</text>
+                <text x="-30" y="45" text-anchor="middle" font-size="9">支付权利金</text>
+
+                <!-- 卖出高行权价看涨 -->
+                <rect x="170" y="10" width="120" height="40" rx="3" fill="#fff1f0" stroke="#f5222d" stroke-width="1"/>
+                <text x="230" y="30" text-anchor="middle" font-size="10">卖出 310Call</text>
+                <text x="230" y="45" text-anchor="middle" font-size="9">收取权利金</text>
+            </g>
+
+            <!-- 行权价区间 -->
+            <line x1="100" y1="140" x2="300" y2="140" stroke="#333" stroke-width="2"/>
+            <text x="310" y="140" text-anchor="start" font-size="11">股价</text>
+
+            <!-- 行权价标记 -->
+            <line x1="150" y1="130" x2="150" y2="150" stroke="#165DFF" stroke-width="2"/>
+            <text x="150" y="160" text-anchor="middle" font-size="10">300 (买入)</text>
+
+            <line x1="250" y1="130" x2="250" y2="150" stroke="#f5222d" stroke-width="2"/>
+            <text x="250" y="160" text-anchor="middle" font-size="10">310 (卖出)</text>
+
+            <!-- 盈利区间 -->
+            <rect x="150" y="110" width="100" height="20" rx="2" fill="#52c41a33" stroke="#52c41a" stroke-width="1"/>
+            <text x="200" y="123" text-anchor="middle" font-size="10" fill="#52c41a">盈利区间</text>
+
+            <!-- 策略特点 -->
+            <text x="200" y="200" text-anchor="middle" font-size="11" fill="#666">
+                限制风险与收益，适合方向性温和预期
+            </text>
+        </svg>
+    `
+
+                        case 32: // Iron Condor 铁鹰
+                            return `
+        <svg width="100%" height="240" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">铁鹰策略</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                卖出跨价宽跨式组合，适合低波动率环境
+            </text>
+
+            <!-- 四个期权组成 -->
+            <g transform="translate(80, 70)">
+                <!-- 卖出低行权价看跌 -->
+                <rect x="10" y="10" width="80" height="30" rx="3" fill="#fff1f0" stroke="#f5222d" stroke-width="1"/>
+                <text x="50" y="27" text-anchor="middle" font-size="10">卖出 3900P</text>
+
+                <!-- 买入更低行权价看跌 -->
+                <rect x="10" y="50" width="80" height="30" rx="3" fill="#e6f7ff" stroke="#165DFF" stroke-width="1"/>
+                <text x="50" y="67" text-anchor="middle" font-size="10">买入 3850P</text>
+
+                <!-- 卖出高行权价看涨 -->
+                <rect x="230" y="10" width="80" height="30" rx="3" fill="#fff1f0" stroke="#f5222d" stroke-width="1"/>
+                <text x="270" y="27" text-anchor="middle" font-size="10">卖出 4100C</text>
+
+                <!-- 买入更高行权价看涨 -->
+                <rect x="230" y="50" width="80" height="30" rx="3" fill="#e6f7ff" stroke="#165DFF" stroke-width="1"/>
+                <text x="270" y="67" text-anchor="middle" font-size="10">买入 4150C</text>
+            </g>
+
+            <!-- 行权价区间与盈利区 -->
+            <line x1="80" y1="150" x2="320" y2="150" stroke="#333" stroke-width="2"/>
+            <text x="330" y="150" text-anchor="start" font-size="11">指数价格</text>
+
+            <!-- 行权价标记 -->
+            <line x1="120" y1="140" x2="120" y2="160" stroke="#999" stroke-width="1"/>
+            <text x="120" y="170" text-anchor="middle" font-size="9">3850</text>
+
+            <line x1="170" y1="130" x2="170" y2="170" stroke="#f5222d" stroke-width="2"/>
+            <text x="170" y="180" text-anchor="middle" font-size="9">3900</text>
+
+            <line x1="230" y1="130" x2="230" y2="170" stroke="#f5222d" stroke-width="2"/>
+            <text x="230" y="180" text-anchor="middle" font-size="9">4100</text>
+
+            <line x1="280" y1="140" x2="280" y2="160" stroke="#999" stroke-width="1"/>
+            <text x="280" y="170" text-anchor="middle" font-size="9">4150</text>
+
+            <!-- 盈利区间 -->
+            <rect x="170" y="120" width="60" height="20" rx="2" fill="#52c41a33" stroke="#52c41a" stroke-width="1"/>
+            <text x="200" y="133" text-anchor="middle" font-size="10" fill="#52c41a">盈利区间</text>
+
+            <!-- 策略特点 -->
+            <text x="200" y="220" text-anchor="middle" font-size="11" fill="#666">
+                有限风险，有限收益，依赖标的价格在中间区间波动
+            </text>
+        </svg>
+    `
+                        case 33: // Bull Put Spread 牛市看跌价差
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">牛市看跌价差 (BPS)</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                卖出较高行权价看跌 + 买入较低行权价看跌，预期温和上涨
+            </text>
+
+            <!-- 期权组成 -->
+            <g transform="translate(100, 70)">
+                <!-- 卖出高行权价看跌 -->
+                <rect x="150" y="10" width="100" height="35" rx="3" fill="#fff1f0" stroke="#f5222d" stroke-width="2"/>
+                <text x="200" y="30" text-anchor="middle" font-size="10">卖出 445P</text>
+                <text x="200" y="45" text-anchor="middle" font-size="9">收取权利金</text>
+
+                <!-- 买入低行权价看跌 -->
+                <rect x="50" y="10" width="100" height="35" rx="3" fill="#e6f7ff" stroke="#165DFF" stroke-width="2"/>
+                <text x="100" y="30" text-anchor="middle" font-size="10">买入 440P</text>
+                <text x="100" y="45" text-anchor="middle" font-size="9">支付权利金</text>
+            </g>
+
+            <!-- 行权价与盈利区间 -->
+            <g transform="translate(80, 140)">
+                <line x1="0" y1="60" x2="240" y2="60" stroke="#333" stroke-width="1"/>
+                <text x="250" y="60" text-anchor="start" font-size="10">标的价格</text>
+
+                <!-- 行权价标记 -->
+                <line x1="100" y1="50" x2="100" y2="70" stroke="#165DFF" stroke-width="2"/>
+                <text x="100" y="80" text-anchor="middle" font-size="10">440P (买入)</text>
+
+                <line x1="160" y1="50" x2="160" y2="70" stroke="#f5222d" stroke-width="2"/>
+                <text x="160" y="80" text-anchor="middle" font-size="10">445P (卖出)</text>
+
+                <!-- 盈利区间 -->
+                <rect x="160" y="45" width="80" height="15" rx="2" fill="#52c41a33" stroke="#52c41a" stroke-width="1"/>
+                <text x="200" y="55" text-anchor="middle" font-size="10" fill="#52c41a">盈利</text>
+
+                <!-- 最大风险区间 -->
+                <rect x="0" y="45" width="100" height="15" rx="2" fill="#f5222d1a" stroke="#f5222d" stroke-width="1"/>
+                <text x="50" y="55" text-anchor="middle" font-size="10" fill="#f5222d">最大风险</text>
+            </g>
+
+            <!-- 策略特点 -->
+            <text x="200" y="210" text-anchor="middle" font-size="11" fill="#666">
+                净收取权利金，最大收益有限，风险为行权价差额减净权利金
+            </text>
+        </svg>
+    `
+
+                        case 34: // Bear Call Spread 熊市看涨价差
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">熊市看涨价差 (BCS)</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                卖出较低行权价看涨 + 买入较高行权价看涨，预期温和下跌
+            </text>
+
+            <!-- 期权组成 -->
+            <g transform="translate(100, 70)">
+                <!-- 卖出低行权价看涨 -->
+                <rect x="50" y="10" width="100" height="35" rx="3" fill="#fff1f0" stroke="#f5222d" stroke-width="2"/>
+                <text x="100" y="30" text-anchor="middle" font-size="10">卖出 200C</text>
+                <text x="100" y="45" text-anchor="middle" font-size="9">收取权利金</text>
+
+                <!-- 买入高行权价看涨 -->
+                <rect x="150" y="10" width="100" height="35" rx="3" fill="#e6f7ff" stroke="#165DFF" stroke-width="2"/>
+                <text x="200" y="30" text-anchor="middle" font-size="10">买入 210C</text>
+                <text x="200" y="45" text-anchor="middle" font-size="9">支付权利金</text>
+            </g>
+
+            <!-- 行权价与盈利区间 -->
+            <g transform="translate(80, 140)">
+                <line x1="0" y1="60" x2="240" y2="60" stroke="#333" stroke-width="1"/>
+                <text x="250" y="60" text-anchor="start" font-size="10">标的价格</text>
+
+                <!-- 行权价标记 -->
+                <line x1="100" y1="50" x2="100" y2="70" stroke="#f5222d" stroke-width="2"/>
+                <text x="100" y="80" text-anchor="middle" font-size="10">200C (卖出)</text>
+
+                <line x1="160" y1="50" x2="160" y2="70" stroke="#165DFF" stroke-width="2"/>
+                <text x="160" y="80" text-anchor="middle" font-size="10">210C (买入)</text>
+
+                <!-- 盈利区间 -->
+                <rect x="0" y="45" width="100" height="15" rx="2" fill="#52c41a33" stroke="#52c41a" stroke-width="1"/>
+                <text x="50" y="55" text-anchor="middle" font-size="10" fill="#52c41a">盈利</text>
+
+                <!-- 最大风险区间 -->
+                <rect x="160" y="45" width="80" height="15" rx="2" fill="#f5222d1a" stroke="#f5222d" stroke-width="1"/>
+                <text x="200" y="55" text-anchor="middle" font-size="10" fill="#f5222d">最大风险</text>
+            </g>
+
+            <!-- 策略特点 -->
+            <text x="200" y="210" text-anchor="middle" font-size="11" fill="#666">
+                净收取权利金，最大收益有限，风险为行权价差额减净权利金
+            </text>
+        </svg>
+    `
+
+                        case 35: // Butterfly Spread 蝶式价差
+                            return `
+        <svg width="100%" height="240" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">蝶式价差 (Butterfly)</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                3个行权价组合：买入1低+卖出2中+买入1高，适合窄幅波动
+            </text>
+
+            <!-- 期权组成 -->
+            <g transform="translate(80, 70)">
+                <!-- 买入低行权价 -->
+                <rect x="30" y="10" width="60" height="30" rx="3" fill="#e6f7ff" stroke="#165DFF" stroke-width="1"/>
+                <text x="60" y="30" text-anchor="middle" font-size="10">买入 440C</text>
+
+                <!-- 卖出中间行权价 (2张) -->
+                <rect x="120" y="10" width="60" height="30" rx="3" fill="#fff1f0" stroke="#f5222d" stroke-width="1"/>
+                <text x="150" y="25" text-anchor="middle" font-size="10">卖出 450C ×2</text>
+                <text x="150" y="40" text-anchor="middle" font-size="8">两份合约</text>
+
+                <!-- 买入高行权价 -->
+                <rect x="210" y="10" width="60" height="30" rx="3" fill="#e6f7ff" stroke="#165DFF" stroke-width="1"/>
+                <text x="240" y="30" text-anchor="middle" font-size="10">买入 460C</text>
+            </g>
+
+            <!-- 行权价与收益曲线 -->
+            <g transform="translate(70, 130)">
+                <line x1="0" y1="80" x2="260" y2="80" stroke="#333" stroke-width="1"/>
+                <text x="270" y="80" text-anchor="start" font-size="10">标的价格</text>
+
+                <!-- 行权价标记 -->
+                <line x1="50" y1="70" x2="50" y2="90" stroke="#165DFF" stroke-width="2"/>
+                <text x="50" y="100" text-anchor="middle" font-size="10">440</text>
+
+                <line x1="130" y1="60" x2="130" y2="100" stroke="#faad14" stroke-width="2"/>
+                <text x="130" y="110" text-anchor="middle" font-size="10">450 (中间)</text>
+
+                <line x1="210" y1="70" x2="210" y2="90" stroke="#165DFF" stroke-width="2"/>
+                <text x="210" y="100" text-anchor="middle" font-size="10">460</text>
+
+                <!-- 蝶式收益曲线 (类似蝴蝶形状) -->
+                <path d="M50,80 Q90,40 130,80 T210,80" fill="none" stroke="#722ED1" stroke-width="2"/>
+                <text x="130" y="30" text-anchor="middle" font-size="10" fill="#722ED1">收益曲线</text>
+            </g>
+
+            <!-- 策略特点 -->
+            <text x="200" y="180" text-anchor="middle" font-size="11" fill="#666">
+                有限风险与收益，依赖标的价格在到期时接近中间行权价
+            </text>
+        </svg>
+    `
+
+                        case 36: // Calendar Spread 日历价差
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">日历价差 (Time Spread)</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                买入远月期权 + 卖出近月同行权价期权，利用时间价值衰减差异
+            </text>
+
+            <!-- 时间线与期权组成 -->
+            <line x1="100" y1="120" x2="300" y2="120" stroke="#333" stroke-width="2"/>
+
+            <!-- 近月期权 (卖出) -->
+            <rect x="130" y="90" width="50" height="25" rx="3" fill="#fff1f0" stroke="#f5222d" stroke-width="1"/>
+            <text x="155" y="105" text-anchor="middle" font-size="10">卖出近月</text>
+            <line x1="155" y1="110" x2="155" y2="120" stroke="#f5222d" stroke-width="1"/>
+
+            <!-- 远月期权 (买入) -->
+            <rect x="220" y="90" width="50" height="25" rx="3" fill="#e6f7ff" stroke="#165DFF" stroke-width="1"/>
+            <text x="245" y="105" text-anchor="middle" font-size="10">买入远月</text>
+            <line x1="245" y1="110" x2="245" y2="120" stroke="#165DFF" stroke-width="1"/>
+
+            <!-- 相同行权价标记 -->
+            <line x1="155" y1="85" x2="245" y2="85" stroke="#faad14" stroke-width="1" stroke-dasharray="3,2"/>
+            <text x="200" y="80" text-anchor="middle" font-size="10" fill="#faad14">相同行权价</text>
+
+            <!-- 时间衰减对比 -->
+            <g transform="translate(100, 150)">
+                <!-- 近月时间衰减快 -->
+                <path d="M30,60 Q60,40 90,0" fill="none" stroke="#f5222d" stroke-width="2"/>
+                <text x="60" y="20" text-anchor="middle" font-size="10" fill="#f5222d">近月Theta大</text>
+
+                <!-- 远月时间衰减慢 -->
+                <path d="M120,60 Q180,50 240,30" fill="none" stroke="#165DFF" stroke-width="2"/>
+                <text x="180" y="40" text-anchor="middle" font-size="10" fill="#165DFF">远月Theta小</text>
+
+                <text x="135" y="70" text-anchor="middle" font-size="10" fill="#666">时间 →</text>
+            </g>
+
+            <!-- 策略逻辑 -->
+            <text x="200" y="210" text-anchor="middle" font-size="11" fill="#666">
+                利用近月期权时间价值衰减更快的特性获利，适合横盘震荡
+            </text>
+        </svg>
+    `
+
+                        case 37: // Diagonal Spread 对角价差
+                            return `
+        <svg width="100%" height="220" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">对角价差 (Diagonal)</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                买入远月期权 + 卖出近月不同行权价期权，结合垂直与日历特性
+            </text>
+
+            <!-- 时间线与期权组成 -->
+            <line x1="100" y1="120" x2="300" y2="120" stroke="#333" stroke-width="2"/>
+
+            <!-- 近月期权 (卖出，高行权价) -->
+            <rect x="130" y="90" width="60" height="25" rx="3" fill="#fff1f0" stroke="#f5222d" stroke-width="1"/>
+            <text x="160" y="105" text-anchor="middle" font-size="10">卖出近月180C</text>
+            <line x1="160" y1="110" x2="160" y2="120" stroke="#f5222d" stroke-width="1"/>
+
+            <!-- 远月期权 (买入，低行权价) -->
+            <rect x="210" y="90" width="60" height="25" rx="3" fill="#e6f7ff" stroke="#165DFF" stroke-width="1"/>
+            <text x="240" y="105" text-anchor="middle" font-size="10">买入远月170C</text>
+            <line x1="240" y1="110" x2="240" y2="120" stroke="#165DFF" stroke-width="1"/>
+
+            <!-- 行权价与时间差异标记 -->
+            <line x1="160" y1="85" x2="240" y2="70" stroke="#faad14" stroke-width="1.5" stroke-dasharray="3,2"/>
+            <text x="200" y="65" text-anchor="middle" font-size="10" fill="#faad14">不同行权价+时间</text>
+
+            <!-- 策略优势 -->
+            <g transform="translate(100, 150)">
+                <rect x="0" y="0" width="200" height="50" rx="3" fill="#f5f5f5" stroke="#eee" stroke-width="1"/>
+                <text x="100" y="20" text-anchor="middle" font-size="10">结合时间衰减与价格变动双重收益</text>
+                <text x="100" y="40" text-anchor="middle" font-size="9" fill="#666">比日历价差更灵活，比垂直价差时间更长</text>
+            </g>
+
+            <!-- 实例标的 -->
+            <text x="200" y="210" text-anchor="middle" font-size="11" fill="#666">
+                实例：AAPL 170C(远月) + AAPL 180C(近月)
+            </text>
+        </svg>
+    `
+
+                        case 38: // Collar 领口策略
+                            return `
+        <svg width="100%" height="240" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">领口策略 (Collar)</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                持有正股 + 买入保护性看跌 + 卖出看涨，锁定价格区间
+            </text>
+
+            <!-- 策略组成 -->
+            <g transform="translate(130, 70)">
+                <!-- 持有正股 -->
+                <rect x="50" y="10" width="120" height="30" rx="3" fill="#f0f0f0" stroke="#ccc" stroke-width="1"/>
+                <text x="110" y="30" text-anchor="middle" font-size="10">持有100股 GOOG</text>
+
+                <!-- 买入看跌 (下限) -->
+                <rect x="20" y="50" width="80" height="30" rx="3" fill="#e6f7ff" stroke="#165DFF" stroke-width="1"/>
+                <text x="60" y="70" text-anchor="middle" font-size="10">买入 95P</text>
+                <text x="60" y="85" text-anchor="middle" font-size="9">下行保护</text>
+
+                <!-- 卖出看涨 (上限) -->
+                <rect x="140" y="50" width="80" height="30" rx="3" fill="#fff1f0" stroke="#f5222d" stroke-width="1"/>
+                <text x="180" y="70" text-anchor="middle" font-size="10">卖出 110C</text>
+                <text x="180" y="85" text-anchor="middle" font-size="9">抵消成本</text>
+            </g>
+
+            <!-- 价格区间与收益 -->
+            <g transform="translate(80, 140)">
+                <line x1="0" y1="80" x2="240" y2="80" stroke="#333" stroke-width="1"/>
+                <text x="250" y="80" text-anchor="start" font-size="10">股价</text>
+
+                <!-- 价格区间标记 -->
+                <line x1="80" y1="70" x2="80" y2="90" stroke="#165DFF" stroke-width="2"/>
+                <text x="80" y="100" text-anchor="middle" font-size="10">95 (下限)</text>
+
+                <line x1="180" y1="70" x2="180" y2="90" stroke="#f5222d" stroke-width="2"/>
+                <text x="180" y="100" text-anchor="middle" font-size="10">110 (上限)</text>
+
+                <!-- 收益曲线 -->
+                <line x1="0" y1="40" x2="80" y2="80" stroke="#722ED1" stroke-width="2"/>
+                <line x1="80" y1="80" x2="180" y2="80" stroke="#722ED1" stroke-width="2"/>
+                <line x1="180" y1="80" x2="240" y2="80" stroke="#722ED1" stroke-width="2"/>
+
+                <!-- 当前价格 -->
+                <line x1="130" y1="65" x2="130" y2="75" stroke="#faad14" stroke-width="1.5"/>
+                <text x="130" y="60" text-anchor="middle" font-size="10" fill="#faad14">当前价</text>
+            </g>
+
+            <!-- 策略目的 -->
+            <text x="200" y="230" text-anchor="middle" font-size="11" fill="#666">
+                锁定股票价格在特定区间，下行风险有限，放弃部分上行收益
+            </text>
+        </svg>
+    `
+
+                        case 39: // The Wheel Strategy 轮式策略
+                            return `
+        <svg width="100%" height="240" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+            <!-- 标题 -->
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">轮式策略 (The Wheel)</text>
+            <text x="200" y="50" text-anchor="middle" font-size="11" fill="#666">
+                系统性循环策略：卖出CSP → 接盘后卖出备兑看涨 → 重复
+            </text>
+
+            <!-- 轮式流程图 -->
+            <g transform="translate(100, 70)">
+                <!-- 步骤1：卖出CSP -->
+                <circle cx="80" cy="60" r="40" fill="#f6ffed" stroke="#52c41a" stroke-width="2"/>
+                <text x="80" y="55" text-anchor="middle" font-size="10">步骤1</text>
+                <text x="80" y="70" text-anchor="middle" font-size="10">卖出CSP</text>
+                <text x="80" y="85" text-anchor="middle" font-size="9">收取权利金</text>
+
+                <!-- 步骤2：接盘股票 -->
+                <circle cx="200" cy="60" r="40" fill="#fff1f0" stroke="#faad14" stroke-width="2"/>
+                <text x="200" y="55" text-anchor="middle" font-size="10">步骤2</text>
+                <text x="200" y="70" text-anchor="middle" font-size="10">接盘股票</text>
+                <text x="200" y="85" text-anchor="middle" font-size="9">若被行权</text>
+
+                <!-- 步骤3：卖出备兑看涨 -->
+                <circle cx="140" cy="160" r="40" fill="#e6f7ff" stroke="#165DFF" stroke-width="2"/>
+                <text x="140" y="155" text-anchor="middle" font-size="10">步骤3</text>
+                <text x="140" y="170" text-anchor="middle" font-size="10">卖出备兑看涨</text>
+                <text x="140" y="185" text-anchor="middle" font-size="9">增强收益</text>
+            </g>
+
+            <!-- 流程箭头 -->
+            <line x1="120" y1="60" x2="160" y2="60" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <line x1="200" y1="100" x2="160" y2="130" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <line x1="120" y1="160" x2="80" y2="120" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+            <text x="100" y="135" text-anchor="middle" font-size="9">循环</text>
+
+            <!-- 策略特点 -->
+            <g transform="translate(200, 210)">
+                <text x="0" y="0" text-anchor="middle" font-size="11" fill="#666">
+                    适合中性至温和看涨市场，通过权利金持续创收，需容忍股票波动
+                </text>
+            </g>
+
+            <!-- 实例 -->
+            <text x="200" y="230" text-anchor="middle" font-size="10" fill="#666">
+                实例：AAPL 160P(CSP) → 接盘后卖165C(备兑)
+            </text>
+        </svg>
+    `
+                        default:
+                            return `
+                <svg width="100%" height="150" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
+                    <text x="200" y="75" text-anchor="middle" font-size="14" fill="#86909C">
+                        图解正在制作中...
+                    </text>
+                </svg>
+            `
+                    }
+                }
+
+                // 添加点击事件
+                row.addEventListener('click', () => {
+                    const isOpen = !detailRow.classList.contains('hidden')
+
+                    // 关闭所有其他详情行
+                    document.querySelectorAll('[data-detail-for]').forEach(el => {
+                        if (el.dataset.detailFor !== term.id) {
+                            el.classList.add('hidden')
+                            const otherRow = document.querySelector(`[data-id="${el.dataset.detailFor}"]`)
+                            if (otherRow) {
+                                otherRow.querySelector('.toggle-icon').classList.remove('rotate-180')
+                            }
+                        }
+                    })
+
+                    // 切换当前详情行
+                    detailRow.classList.toggle('hidden', isOpen)
+                    row.querySelector('.toggle-icon').classList.toggle('rotate-180', !isOpen)
+
+                    // 如果打开了详情，滚动到可见位置
+                    if (!isOpen) {
+                        detailRow.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+                    }
+                })
+
+                // 添加到表格
+                termsTable.appendChild(row)
+                termsTable.appendChild(detailRow)
+            })
+        }
+
+        // 搜索功能
+        function filterTerms(query) {
+            if (!query) return optionsTerms
+
+            const lowerQuery = query.toLowerCase()
+            return optionsTerms.filter(term =>
+                term.english.toLowerCase().includes(lowerQuery) ||
+                term.chinese.toLowerCase().includes(lowerQuery) ||
+                term.abbr.toLowerCase().includes(lowerQuery) ||
+                term.explanation.toLowerCase().includes(lowerQuery)
+            )
+        }
+
+        // 搜索输入事件
+        searchInput.addEventListener('input', (e) => {
+            const filtered = filterTerms(e.target.value)
+            renderTable(filtered)
+        })
+
+        // 返回顶部按钮
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible')
+                backToTopBtn.classList.add('opacity-100', 'visible')
+            } else {
+                backToTopBtn.classList.remove('opacity-100', 'visible')
+                backToTopBtn.classList.add('opacity-0', 'invisible')
+            }
+        })
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        })
+
+        // 初始化
+        renderTable(optionsTerms);
+    </script>
+</body>
+
+</html>
